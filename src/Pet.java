@@ -8,6 +8,8 @@ public class Pet {
     private final LocalDateTime recordingDate;
 
     public Pet(String breed, String nickName, Integer ageInYears, LocalDateTime recordingDate) {
+        if (breed == null || nickName == null || ageInYears == null || recordingDate == null)
+            throw new IllegalArgumentException();
         this.breed = breed;
         this.nickName = nickName;
         this.ageInYears = ageInYears;
