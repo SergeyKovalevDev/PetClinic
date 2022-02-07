@@ -1,11 +1,11 @@
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class PetClinic {
+public class PetClinicJournal {
 
     private final List<Pet> petList;
 
-    public PetClinic() {
+    public PetClinicJournal() {
         this.petList = new ArrayList<>();
     }
 
@@ -61,7 +61,7 @@ public class PetClinic {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        PetClinic pc = new PetClinic();
+        PetClinicJournal pc = new PetClinicJournal();
         pc.add(new Pet("Ferret", "Abu", 3, LocalDateTime.now()));
         Thread.sleep(2000);
         pc.add(new Cat("Shelby", 5, LocalDateTime.now()));
