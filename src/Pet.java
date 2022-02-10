@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Pet {
 
@@ -8,6 +9,8 @@ public class Pet {
     private final LocalDateTime recordingDate;
 
     public Pet(String breed, String nickName, Integer ageInYears, LocalDateTime recordingDate) {
+        if (breed == null || nickName == null || ageInYears == null || recordingDate == null)
+            throw new IllegalArgumentException();
         this.breed = breed;
         this.nickName = nickName;
         this.ageInYears = ageInYears;
@@ -36,7 +39,20 @@ public class Pet {
                 "breed='" + breed + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", Age=" + ageInYears +
-                ", recordindDate=" + recordingDate +
+                ", recordingDate=" + recordingDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pet pet = (Pet) o;
+        return breed.equals(pet.breed) && nickName.equals(pet.nickName) && ageInYears.equals(pet.ageInYears);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(breed, nickName, ageInYears);
     }
 }
